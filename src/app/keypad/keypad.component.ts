@@ -31,7 +31,7 @@ export class KeypadComponent implements OnInit {
     {label: "2", color: "#4a4952", width: 65, type: "number", action: (label: string) => this.appendDisplay(label)}, 
     {label: "3", color: "#4a4952", width: 65, type: "number", action: (label: string) => this.appendDisplay(label)}, 
     {label: "+", color: "#fd8d08", width: 65, type: "add", active: false, action: () => this.changeActivation(15)}, 
-    {label: "0", color: "#4a4952", width: 140, type: "number", action: (label: string) => this.appendDisplay(label)}, 
+    {label: "0", color: "#4a4952", width: 130, type: "number", action: (label: string) => this.appendDisplay(label)}, 
     {label: ".", color: "#4a4952", width: 65, type: "decimal", action: (label: string) => this.appendDisplay(label)}, 
     {label: "=", color: "#fd8d08", width: 65, type: "equals", action: () => this.evaluate()}
   ]
