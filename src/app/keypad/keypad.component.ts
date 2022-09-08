@@ -50,7 +50,7 @@ export class KeypadComponent implements OnInit {
     } else {
       this.currentDisplay += key;
     }
-    if (this.currentDisplay[0] === '0') {
+    if (this.currentDisplay[0] === '0' && key !== ".") {
       this.currentDisplay = this.currentDisplay.slice(1, this.currentDisplay.length); 
     }
     
@@ -106,25 +106,19 @@ export class KeypadComponent implements OnInit {
       switch (nextOperation) {
         case 'X':
           totalThusFar *= +this.currentDisplay;
-          console.log(nextOperation);
           break;
         case '÷':
           totalThusFar /= +this.currentDisplay;
-          console.log(nextOperation);
           break;
         case '+':
           totalThusFar += +this.currentDisplay;
-          console.log(nextOperation);
           break;
         case '-':
           totalThusFar -= +this.currentDisplay;
-          console.log(nextOperation);
           break;
       }
     }
 
-
-    console.log(totalThusFar)
     this.currentDisplay = totalThusFar.toString();
     for (let key of this.keyAttributes) {
       key.active = false;
