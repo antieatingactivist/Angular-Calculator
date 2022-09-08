@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit  } from '@angular/core';
 import { IKey } from '../shared/button.model';
 
 @Component({
@@ -8,10 +8,9 @@ import { IKey } from '../shared/button.model';
 })
 export class KeypadComponent implements OnInit {
 
-  // @Output() updateDisplay = new EventEmitter<string>();
   currentDisplay: string = "0";
   keyAttributes: Array<IKey> = [
-    {label: "AC", color: "#2b2a36", width: 65, type: "clear"}, 
+    {label: "AC", color: "#2b2a36", width: 65, type: "clear", action: () => this.clearDisplay()}, 
     {label: "±", color: "#2b2a36", width: 65, type: "changeSign"}, 
     {label: "%", color: "#2b2a36", width: 65, type: "percent"}, 
     {label: "÷", color: "#fd8d08", width: 65, type: "divide"}, 
@@ -40,9 +39,11 @@ export class KeypadComponent implements OnInit {
 
   appendDisplay(key: string): void {
     this.currentDisplay += key;
-    console.log(this.currentDisplay);
-    // this.updateDisplay.emit(this.currentDisplay);
     
+  }
+
+  clearDisplay(): void {
+    this.currentDisplay = '0';
   }
 
 
