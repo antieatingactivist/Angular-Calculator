@@ -13,8 +13,11 @@ export class ButtonComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  getColor(): object {
-    return {backgroundColor: this.keyAttribute.color}
+  getStyle(): object {
+    return {
+      backgroundColor: this.keyAttribute.color,
+      width: `${this.keyAttribute.width}px`
+    }
   }
 
 }

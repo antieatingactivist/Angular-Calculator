@@ -1,8 +1,7 @@
 button {
-    background-color: #770000;
     color: #FFFFFF;
-    width: 65px;
     height: 60px;
     margin: 5px;
     border: 1px solid #000000;
+    font-size: 20px;
 }
