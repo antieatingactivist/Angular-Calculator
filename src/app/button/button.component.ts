@@ -8,9 +8,13 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ButtonComponent implements OnInit {
   
   constructor() { }
-  @Input() keyLabel: string | undefined;
-  
+  @Input() keyAttribute: any;
+
+
   ngOnInit(): void {
+  }
+  getColor(): object {
+    return {backgroundColor: this.keyAttribute.color}
   }
 
 }
