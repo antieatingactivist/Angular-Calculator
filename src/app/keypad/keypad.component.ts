@@ -58,11 +58,7 @@ export class KeypadComponent implements OnInit {
   private clearDisplay(): void {
     this.currentDisplay = '0';
     for (let key of this.keyAttributes) {
-      if (key.label === this.activeOperator) {
-        key.active = true;
-      } else {
-        key.active = false;
-      }
+      key.active = false;
     }
   }
 
