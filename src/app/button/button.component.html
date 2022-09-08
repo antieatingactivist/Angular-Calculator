@@ -1,1 +1,1 @@
-<button [ngStyle]="getStyle()">{{keyAttribute.label}}</button>
+<button [ngStyle]="getStyle()" (click)="click(keyAttribute.type, keyAttribute.label)">{{keyAttribute.label}}</button>

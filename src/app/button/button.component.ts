@@ -19,5 +19,8 @@ export class ButtonComponent implements OnInit {
       width: `${this.keyAttribute.width}px`
     }
   }
+  click(type: string, label: string): void {
+    console.log(type, label);
+  }
 
 }
