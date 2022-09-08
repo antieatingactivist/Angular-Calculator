@@ -92,12 +92,48 @@ export class KeypadComponent implements OnInit {
   }
 
   private evaluate() {
-    let equation = "";
+    let totalThusFar: number = 0;
+    let nextOperation: string | null = null;
+    // let equation = "";
+    // for (let storedValue of this.storedValues) {
+    //   equation += `${storedValue.value} ${storedValue.operator} `;
+    // }
+    // equation += this.currentDisplay
+
     for (let storedValue of this.storedValues) {
-      equation += `${storedValue.value} ${storedValue.operator} `;
+      console.log(totalThusFar);
+      if (nextOperation === null) {
+        totalThusFar = +storedValue.value;
+      } 
+      nextOperation = storedValue.operator;
+      switch (nextOperation) {
+        case 'X':
+          totalThusFar *= +this.currentDisplay;
+          console.log(nextOperation);
+          break;
+        case '÷':
+          totalThusFar /= +this.currentDisplay;
+          console.log(nextOperation);
+          break;
+        case '+':
+          totalThusFar += +this.currentDisplay;
+          console.log(nextOperation);
+          break;
+        case '-':
+          totalThusFar -= +this.currentDisplay;
+          console.log(nextOperation);
+          break;
+      }
     }
-    equation += this.currentDisplay
-    console.log(equation)
+
+
+    console.log(totalThusFar)
+    this.currentDisplay = totalThusFar.toString();
+    for (let key of this.keyAttributes) {
+      key.active = false;
+    }
+    this.clearDisplayOnNext = true;
+    this.storedValues = [];
   }
 
 }
