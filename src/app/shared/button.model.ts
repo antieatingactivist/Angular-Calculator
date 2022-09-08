@@ -3,6 +3,7 @@ export interface IKey {
     color: string;
     width: number;
     type: string;
+    action?: Function;
 
 
 
