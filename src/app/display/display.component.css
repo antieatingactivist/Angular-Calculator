@@ -1,0 +1,9 @@
+div {
+    color: #ffffff;
+    width: calc(100% - 20px);
+    background-color: #555555;
+    margin: 10px;
+    height: 50px;
+    text-align: right;
+    font-size: 40px;
+}
