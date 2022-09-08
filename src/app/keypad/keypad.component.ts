@@ -1,6 +1,6 @@
 import { Component, OnInit  } from '@angular/core';
-import { IKey } from '../shared/button.model';
-import { IOperation } from '../shared/operation.model';
+import { IKey, IOperation } from '../shared/';
+
 
 @Component({
   selector: 'app-keypad',
@@ -15,22 +15,22 @@ export class KeypadComponent implements OnInit {
   clearDisplayOnNext: boolean = false;
 
   keyAttributes: Array<IKey> = [
-    {label: "AC", color: "#2b2a36", width: 65, type: "clear", action: () => this.clearDisplay()}, 
+    {label: "AC", color: "#2b2a36", width: 65, type: "clear", action: (label: string) => this.clearDisplay(label)}, 
     {label: "±", color: "#2b2a36", width: 65, type: "changeSign", action: () => this.changeSign()}, 
     {label: "%", color: "#2b2a36", width: 65, type: "percent"}, 
-    {label: "÷", color: "#fd8d08", width: 65, type: "divide", active: false, action: () => this.changeActivation(3)}, 
+    {label: "÷", color: "#fd8d08", width: 65, type: "divide", active: false, action: (label: string) => this.changeActivation(label)}, 
     {label: "7", color: "#4a4952", width: 65, type: "number", action: (label: string) => this.appendDisplay(label)}, 
     {label: "8", color: "#4a4952", width: 65, type: "number", action: (label: string) => this.appendDisplay(label)}, 
     {label: "9", color: "#4a4952", width: 65, type: "number", action: (label: string) => this.appendDisplay(label)}, 
-    {label: "X", color: "#fd8d08", width: 65, type: "multiply", active: false, action: () => this.changeActivation(7)}, 
+    {label: "X", color: "#fd8d08", width: 65, type: "multiply", active: false, action: (label: string) => this.changeActivation(label)}, 
     {label: "4", color: "#4a4952", width: 65, type: "number", action: (label: string) => this.appendDisplay(label)}, 
     {label: "5", color: "#4a4952", width: 65, type: "number", action: (label: string) => this.appendDisplay(label)}, 
     {label: "6", color: "#4a4952", width: 65, type: "number", action: (label: string) => this.appendDisplay(label)}, 
-    {label: "-", color: "#fd8d08", width: 65, type: "subtract", active: false, action: () => this.changeActivation(11)}, 
+    {label: "-", color: "#fd8d08", width: 65, type: "subtract", active: false, action: (label: string) => this.changeActivation(label)}, 
     {label: "1", color: "#4a4952", width: 65, type: "number", action: (label: string) => this.appendDisplay(label)}, 
     {label: "2", color: "#4a4952", width: 65, type: "number", action: (label: string) => this.appendDisplay(label)}, 
     {label: "3", color: "#4a4952", width: 65, type: "number", action: (label: string) => this.appendDisplay(label)}, 
-    {label: "+", color: "#fd8d08", width: 65, type: "add", active: false, action: () => this.changeActivation(15)}, 
+    {label: "+", color: "#fd8d08", width: 65, type: "add", active: false, action: (label: string) => this.changeActivation(label)}, 
     {label: "0", color: "#4a4952", width: 130, type: "number", action: (label: string) => this.appendDisplay(label)}, 
     {label: ".", color: "#4a4952", width: 65, type: "decimal", action: (label: string) => this.appendDisplay(label)}, 
     {label: "=", color: "#fd8d08", width: 65, type: "equals", action: () => this.evaluate()}
@@ -43,6 +43,7 @@ export class KeypadComponent implements OnInit {
   }
 
   private appendDisplay(key: string): void {
+    this.keyAttributes[0].label = "C";
     if (this.clearDisplayOnNext) {
       this.currentDisplay = key;
       this.clearDisplayOnNext = false;
@@ -55,10 +56,15 @@ export class KeypadComponent implements OnInit {
     
   }
 
-  private clearDisplay(): void {
+  private clearDisplay(label: string): void {
     this.currentDisplay = '0';
-    for (let key of this.keyAttributes) {
-      key.active = false;
+    if (label === "AC") {
+      for (let key of this.keyAttributes) {
+        key.active = false;
+      }
+      this.storedValues = [];
+    } else {
+      this.keyAttributes[0].label = "AC"
     }
   }
 
@@ -72,8 +78,8 @@ export class KeypadComponent implements OnInit {
     }
   }
 
-  private changeActivation(id: number): void {
-    this.activeOperator = this.keyAttributes[id].label;
+  private changeActivation(operator: string): void {
+    this.activeOperator = operator;
     this.storedValues.push({value: this.currentDisplay, operator: this.activeOperator});
     for (let key of this.keyAttributes) {
       if (key.label === this.activeOperator) {
@@ -90,11 +96,6 @@ export class KeypadComponent implements OnInit {
   private evaluate() {
     let totalThusFar: number = 0;
     let nextOperation: string | null = null;
-    // let equation = "";
-    // for (let storedValue of this.storedValues) {
-    //   equation += `${storedValue.value} ${storedValue.operator} `;
-    // }
-    // equation += this.currentDisplay
 
     for (let storedValue of this.storedValues) {
       console.log(totalThusFar);
