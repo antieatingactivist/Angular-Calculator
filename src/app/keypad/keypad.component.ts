@@ -17,7 +17,7 @@ export class KeypadComponent implements OnInit {
   keyAttributes: Array<IKey> = [
     {label: "AC", color: "#2b2a36", width: 65, type: "clear", action: (label: string) => this.clearDisplay(label)}, 
     {label: "±", color: "#2b2a36", width: 65, type: "changeSign", action: () => this.changeSign()}, 
-    {label: "%", color: "#2b2a36", width: 65, type: "percent"}, 
+    {label: "%", color: "#2b2a36", width: 65, type: "percent", action: () => this.getPercent()}, 
     {label: "÷", color: "#fd8d08", width: 65, type: "divide", active: false, action: (label: string) => this.changeActivation(label)}, 
     {label: "7", color: "#4a4952", width: 65, type: "number", action: (label: string) => this.appendDisplay(label)}, 
     {label: "8", color: "#4a4952", width: 65, type: "number", action: (label: string) => this.appendDisplay(label)}, 
@@ -92,14 +92,28 @@ export class KeypadComponent implements OnInit {
     console.log(this.storedValues);
 
   }
+  private getPercent() {
+    const lastStoredValue = this.storedValues[this.storedValues.length - 1];
+    console.log(lastStoredValue);
+    switch (lastStoredValue.operator) {
+      case "+":
+      case "-": 
+        this.currentDisplay = (+this.currentDisplay * +lastStoredValue.value/100).toString();
+        break;
+      default:
+        this.currentDisplay = (+lastStoredValue.value/100).toString();
+
+    }
+    
+  }
 
   private evaluate() {
     let totalThusFar: number = 0;
-    let nextOperation: string | null = null;
+    let nextOperation: string = "none";
 
     for (let storedValue of this.storedValues) {
       console.log(totalThusFar);
-      if (nextOperation === null) {
+      if (nextOperation === 'none') {
         totalThusFar = +storedValue.value;
       } 
       nextOperation = storedValue.operator;
@@ -124,7 +138,8 @@ export class KeypadComponent implements OnInit {
       key.active = false;
     }
     this.clearDisplayOnNext = true;
-    this.storedValues = [];
+    this.storedValues = this.storedValues.slice(-1);
+    console.log(this.storedValues);
   }
 
 }
