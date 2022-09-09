@@ -45,8 +45,12 @@ export class KeypadComponent implements OnInit {
   private appendDisplay(key: string): void {
     this.keyAttributes[0].label = "C";
     if (this.clearDisplayOnNext) {
-      this.currentDisplay = key;
       this.clearDisplayOnNext = false;
+      if (key === ".") {
+        this.currentDisplay = "0.";
+      } else {
+        this.currentDisplay = key;
+      }
     } else {
       this.currentDisplay += key;
     }
