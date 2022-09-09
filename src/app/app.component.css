@@ -6,7 +6,31 @@ body {
 }
 main {
     margin-top: 10vh;
-    background-color: #1b1a25;
+    background-color: #1b1a2599;
     width: 260px;
-    height: 370px;
+    height: 400px;
+    border: 1px solid #55555522;
+    border-radius: 10px;
+    overflow: hidden;
+}
+header {
+    /* height: 10px; */
+    display: inline-flex;
+    padding: 4px;
+}
+
+.red {
+    background-color: #fc4646;
+}
+.yellow {
+    background-color: #fdae24;
+}
+.green {
+    background-color: #29c032;
+}
+.dot {
+    width: 12px;
+    height: 12px;;
+    margin: 5px;
+    border-radius: 100px;
 }

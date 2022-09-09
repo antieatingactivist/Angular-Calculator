@@ -22,7 +22,7 @@ export class KeypadComponent implements OnInit {
     {label: "7", color: "#4a4952", width: 65, type: "number", action: (label: string) => this.appendDisplay(label)}, 
     {label: "8", color: "#4a4952", width: 65, type: "number", action: (label: string) => this.appendDisplay(label)}, 
     {label: "9", color: "#4a4952", width: 65, type: "number", action: (label: string) => this.appendDisplay(label)}, 
-    {label: "X", color: "#fd8d08", width: 65, type: "multiply", active: false, action: (label: string) => this.changeActivation(label)}, 
+    {label: "x", color: "#fd8d08", width: 65, type: "multiply", active: false, action: (label: string) => this.changeActivation(label)}, 
     {label: "4", color: "#4a4952", width: 65, type: "number", action: (label: string) => this.appendDisplay(label)}, 
     {label: "5", color: "#4a4952", width: 65, type: "number", action: (label: string) => this.appendDisplay(label)}, 
     {label: "6", color: "#4a4952", width: 65, type: "number", action: (label: string) => this.appendDisplay(label)}, 
@@ -122,7 +122,7 @@ export class KeypadComponent implements OnInit {
       } 
       nextOperation = storedValue.operator;
       switch (nextOperation) {
-        case 'X':
+        case 'x':
           totalThusFar *= +this.currentDisplay;
           break;
         case '÷':

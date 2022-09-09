@@ -17,7 +17,7 @@ export class ButtonComponent implements OnInit {
     return {
       backgroundColor: this.keyAttribute.color,
       width: `${this.keyAttribute.width}px`,
-      borderWidth: this.keyAttribute.active ? '3px' : '1px'
+      borderWidth: this.keyAttribute.active ? '2px' : '.5px'
     
     }
   }
