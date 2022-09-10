@@ -47,21 +47,21 @@ export class KeypadComponent implements OnInit {
     if (this.clearDisplayOnNext) {
       this.clearDisplayOnNext = false;
       if (key === ".") {
-        this.currentDisplay = "0.";
+        this.updateDisplay("0.");
       } else {
-        this.currentDisplay = key;
+        this.updateDisplay(key);
       }
     } else {
-      this.currentDisplay += key;
+      this.updateDisplay(this.currentDisplay + key);
     }
     if (this.currentDisplay[0] === '0' && key !== ".") {
-      this.currentDisplay = this.currentDisplay.slice(1, this.currentDisplay.length); 
+      this.updateDisplay(this.currentDisplay.slice(1, this.currentDisplay.length)); 
     }
     
   }
 
   private clearDisplay(label: string): void {
-    this.currentDisplay = '0';
+    this.updateDisplay("0", true);
     if (label === "AC") {
       for (let key of this.keyAttributes) {
         key.active = false;
@@ -75,14 +75,15 @@ export class KeypadComponent implements OnInit {
   private changeSign(): void {
     if (this.currentDisplay !== '0') {
       if (this.currentDisplay[0] !== '-') {
-        this.currentDisplay = `-${this.currentDisplay}`;
+        this.updateDisplay(`-${this.currentDisplay}`, true);
       } else {
-        this.currentDisplay = this.currentDisplay.slice(1, this.currentDisplay.length); 
+        this.updateDisplay((this.currentDisplay.slice(1, this.currentDisplay.length)), true); 
       }
     }
   }
 
   private changeActivation(operator: string): void {
+    this.updateDisplay(this.currentDisplay, true);
     this.activeOperator = operator;
     this.storedValues.push({value: this.currentDisplay, operator: this.activeOperator});
     for (let key of this.keyAttributes) {
@@ -97,15 +98,16 @@ export class KeypadComponent implements OnInit {
 
   }
   private getPercent() {
+    this.updateDisplay(this.currentDisplay, true);
     const lastStoredValue = this.storedValues[this.storedValues.length - 1];
     console.log(lastStoredValue);
     switch (lastStoredValue.operator) {
       case "+":
       case "-": 
-        this.currentDisplay = (+this.currentDisplay * +lastStoredValue.value/100).toString();
+        this.updateDisplay((+this.currentDisplay * +lastStoredValue.value/100).toString());
         break;
       default:
-        this.currentDisplay = (+lastStoredValue.value/100).toString();
+        this.updateDisplay((+lastStoredValue.value/100).toString());
 
     }
     
@@ -137,13 +139,23 @@ export class KeypadComponent implements OnInit {
       }
     }
 
-    this.currentDisplay = totalThusFar.toString();
+    this.updateDisplay(totalThusFar.toString(), true);
     for (let key of this.keyAttributes) {
       key.active = false;
     }
     this.clearDisplayOnNext = true;
     this.storedValues = this.storedValues.slice(-1);
     console.log(this.storedValues);
+  }
+
+  private updateDisplay(contents: string, flicker: boolean = false) {
+    if (flicker) {
+      this.currentDisplay = "";
+      setTimeout(() => {
+        this.currentDisplay = contents;
+      },50);
+    }
+    else this.currentDisplay = contents;
   }
 
 }
