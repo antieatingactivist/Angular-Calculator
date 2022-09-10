@@ -55,7 +55,7 @@ export class KeypadComponent implements OnInit {
       } else {
         this.updateDisplay(key);
       }
-    } else if (!(this.currentDisplay.includes(".") && key === ".")) { 
+    } else if (!(this.currentDisplay.includes(".") && key === ".")/* && this.currentDisplay.length < 8 */) { 
         this.updateDisplay(this.currentDisplay + key); 
     } else {
         this.updateDisplay(this.currentDisplay, true); 
