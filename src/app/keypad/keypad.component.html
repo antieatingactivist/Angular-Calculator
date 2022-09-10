@@ -1,5 +1,5 @@
 <div>  
-    <app-display [currentDisplay]="currentDisplay" ></app-display>
+    <app-display [isOn]="displayIsOn" [currentDisplay]="currentDisplay" ></app-display>
     
     <app-button *ngFor="let key of keyAttributes" [keyAttribute]="key"></app-button>
 </div>

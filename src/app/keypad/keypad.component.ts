@@ -10,6 +10,7 @@ import { IKey, IOperation } from '../shared/';
 export class KeypadComponent implements OnInit {
 
   currentDisplay: string = "0";
+  displayIsOn: boolean = true;
   activeOperator: string = "";
   storedValues: IOperation[] = [];
   clearDisplayOnNext: boolean = false;
@@ -149,13 +150,13 @@ export class KeypadComponent implements OnInit {
   }
 
   private updateDisplay(contents: string, flicker: boolean = false) {
+    this.currentDisplay = contents;
     if (flicker) {
-      this.currentDisplay = "";
+      this.displayIsOn = false;
       setTimeout(() => {
-        this.currentDisplay = contents;
+        this.displayIsOn = true;
       },50);
     }
-    else this.currentDisplay = contents;
   }
 
 }

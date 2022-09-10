@@ -8,7 +8,8 @@ import { Component, OnInit, Input } from '@angular/core';
 export class DisplayComponent implements OnInit {
 
   constructor() { }
-  @Input() currentDisplay: any;
+  @Input() currentDisplay: string = "";
+  @Input() isOn: boolean = true;
   ngOnInit(): void {
   }
 
