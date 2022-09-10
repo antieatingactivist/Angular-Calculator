@@ -45,6 +45,9 @@ export class KeypadComponent implements OnInit {
 
   private appendDisplay(key: string): void {
     this.keyAttributes[0].label = "C";
+    if (this.currentDisplay === '0' && key !== ".") {
+      this.updateDisplay(this.currentDisplay.slice(1, this.currentDisplay.length)); 
+    }
     if (this.clearDisplayOnNext) {
       this.clearDisplayOnNext = false;
       if (key === ".") {
@@ -52,12 +55,12 @@ export class KeypadComponent implements OnInit {
       } else {
         this.updateDisplay(key);
       }
+    } else if (!(this.currentDisplay.includes(".") && key === ".")) { 
+        this.updateDisplay(this.currentDisplay + key); 
     } else {
-      this.updateDisplay(this.currentDisplay + key);
+        this.updateDisplay(this.currentDisplay, true); 
     }
-    if (this.currentDisplay[0] === '0' && key !== ".") {
-      this.updateDisplay(this.currentDisplay.slice(1, this.currentDisplay.length)); 
-    }
+
     
   }
 
