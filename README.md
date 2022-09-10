@@ -1,6 +1,5 @@
-# NgCalc
-
-## https://antieatingactivist.github.io/ng-calc/
+# Angular-Calculator
+## https://antieatingactivist.github.io/Angular-Calculator/
 
 This is a project I did while learning the ins and outs of Angular. It is modeled after the MacOS calculator and the goal is to implement all of the behaviors.
 
