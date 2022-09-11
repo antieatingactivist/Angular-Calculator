@@ -9,9 +9,10 @@ main {
     background-color: #242424aa;
     width: 260px;
     height: 400px;
-    border: 1px solid #ffffff55;
-    border-radius: 10px;
+    border: 1px solid #ffffff33;
+    border-radius: 12px;
     overflow: hidden;
+    box-shadow: 1px 2px 5px #00000099;
 }
 header {
     /* height: 10px; */
