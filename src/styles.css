@@ -5,3 +5,11 @@
 body { 
     background: #222233;
 }
+.sup {
+    font-size: 70%;
+    vertical-align: top;
+}
+.sub {
+    font-size: 80%;
+    vertical-align: bottom;
+}

@@ -2,9 +2,10 @@ button {
     color: #FFFFFF;
     height: 60px;
     border-style: solid;
-    font-size: 26px;
+    font-size: 1.6em;
 }
 
 button:active {
     background-color: #ffffff44 !important;
 }
+

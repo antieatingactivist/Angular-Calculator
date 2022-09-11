@@ -1,1 +1,1 @@
-<button [ngStyle]="getStyle()" (click)="this.keyAttribute.action(this.keyAttribute.label)">{{keyAttribute.label}}</button>
+<button [ngStyle]="getStyle()" (click)="this.keyAttribute.action(this.keyAttribute.label)" [innerHTML]="this.keyAttribute.label"></button>
