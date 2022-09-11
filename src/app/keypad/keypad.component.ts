@@ -133,7 +133,11 @@ export class KeypadComponent implements OnInit {
         this.updateDisplay((x + y).toString(), true); 
         break;
       case 'subtract':
-        this.updateDisplay((x - y).toString(), true); 
+        if (this.clearDisplayOnNext) {
+          this.updateDisplay((-(x - y)).toString(), true); 
+        } else {
+          this.updateDisplay((x - y).toString(), true); 
+        }
         break;
     }
 
