@@ -46,23 +46,26 @@ export class KeypadComponent implements OnInit {
 
   private appendDisplay(key: string): void {
     this.keyAttributes[0].label = "C";
-    if (this.currentDisplay === '0' && key !== ".") {
-      this.updateDisplay(this.currentDisplay.slice(1, this.currentDisplay.length)); 
-    }
-    if (this.clearDisplayOnNext) {
-      this.clearDisplayOnNext = false;
-      if (key === ".") {
-        this.updateDisplay("0.");
-      } else {
-        this.updateDisplay(key);
-      }
-    } else if (!(this.currentDisplay.includes(".") && key === ".")/* && this.currentDisplay.length < 8 */) { 
-        this.updateDisplay(this.currentDisplay + key); 
-    } else {
-        this.updateDisplay(this.currentDisplay, true); 
-    }
+    if (this.currentDisplay.length < 30) {
 
-    
+      if (this.currentDisplay === '0' && key !== ".") {
+        this.updateDisplay(this.currentDisplay.slice(1, this.currentDisplay.length)); 
+      }
+      if (this.clearDisplayOnNext) {
+        this.clearDisplayOnNext = false;
+        if (key === ".") {
+          this.updateDisplay("0.");
+        } else {
+          this.updateDisplay(key);
+        }
+      } else if (!(this.currentDisplay.includes(".") && key === ".")/* && this.currentDisplay.length < 8 */) { 
+        this.updateDisplay(this.currentDisplay + key); 
+      } else {
+        this.updateDisplay(this.currentDisplay, true); 
+      }
+    }
+      
+      
   }
 
   private clearDisplay(label: string): void {
