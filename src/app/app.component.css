@@ -9,7 +9,9 @@ main {
     background-color: #242424aa;
     width: 260px;
     height: 400px;
-    border: 1px solid #ffffff33;
+    border-color: #ffffff33;
+    border-width: 1px;
+    border-style: inset solid;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 1px 2px 5px #00000099;

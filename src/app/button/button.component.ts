@@ -17,8 +17,8 @@ export class ButtonComponent implements OnInit {
     return {
       backgroundColor: this.keyAttribute.color,
       width: `${this.keyAttribute.width}px`,
-      borderWidth: this.keyAttribute.active ? '2px' : '.5px .5px 0 0'
-    
+      borderWidth: this.keyAttribute.active ? '3px' : '1px',
+      borderColor: this.keyAttribute.active ? '#000000' : '#000000 #000000 #00000000 #00000000' 
     }
   }
   click(type: string, label: string): void {
