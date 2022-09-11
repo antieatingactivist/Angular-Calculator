@@ -10,22 +10,36 @@ export class DisplayComponent implements OnInit {
   constructor() { }
   @Input() currentDisplay: string = "";
   @Input() isOn: boolean = true;
+  physicalWidth: number = 0;
+
   ngOnInit(): void {
   }
   getStyle(): object {
+    const split = this.currentDisplay.split('');
+    this.physicalWidth = 0;
+    for(let digit of split) {
+      switch (digit) {
+        case '1': this.physicalWidth+=7;
+          break;
+        case '.': this.physicalWidth+=4;
+          break;
+        default: this.physicalWidth+=10;
+      }
+    }
+    console.log("WIDTH: ", this.physicalWidth);
     return {
       fontSize: this.determineSize(),  
     }
   }
   private determineSize(): string {
-    const x = this.currentDisplay.length;
+    const x = this.physicalWidth;
     switch (true) {
-      case (x > 26): return '14px';
-      case (x > 21): return '16px';
-      case (x > 14): return '20px';
-      case (x > 10): return '30px';
-      case (x > 8): return '40px';
-      default: return '50px';
+      case (x > 220): return '.8em';
+      case (x > 180): return '1.1em';
+      case (x > 140): return '1.4em';
+      case (x > 110): return '1.8em';
+      case (x > 80): return '2.3em';
+      default: return '3em';
     }
     
   }
