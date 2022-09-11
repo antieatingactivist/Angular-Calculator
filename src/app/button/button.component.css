@@ -5,3 +5,7 @@ button {
     border: 0px solid #000000;
     font-size: 26px;
 }
+
+button:active {
+    background-color: #ffffff44 !important;
+}
