@@ -1,5 +1,5 @@
 import { Component, OnInit  } from '@angular/core';
-import { IKey, IOperation } from '../shared/';
+import { IKey } from '../shared/';
 
 
 @Component({
@@ -10,11 +10,11 @@ import { IKey, IOperation } from '../shared/';
 export class KeypadComponent implements OnInit {
 
   currentDisplay: string = "0";
+  previousDisplay: string = "0";
   displayIsOn: boolean = true;
   activeOperator: string = "";
-  storedValues: IOperation[] = [];
   clearDisplayOnNext: boolean = false;
-  colors: Array<string> = ["#39393988", "#ff9f0a", "#5a5a5add"]
+  colors: Array<string> = ["#39393988", "#ff9f0a", "#5a5a5add"];
 
   keyAttributes: Array<IKey> = [
     {label: "AC", color: this.colors[0], width: 65, type: "clear", action: (label: string) => this.clearDisplay(label)}, 
@@ -70,8 +70,8 @@ export class KeypadComponent implements OnInit {
     if (label === "AC") {
       for (let key of this.keyAttributes) {
         key.active = false;
+        this.previousDisplay = "0";
       }
-      this.storedValues = [];
     } else {
       this.keyAttributes[0].label = "AC"
     }
@@ -90,71 +90,62 @@ export class KeypadComponent implements OnInit {
   private changeActivation(operator: string): void {
     this.updateDisplay(this.currentDisplay, true);
     this.activeOperator = operator;
-    this.storedValues.push({value: this.currentDisplay, operator: this.activeOperator});
     for (let key of this.keyAttributes) {
       if (key.label === this.activeOperator) {
         key.active = true;
         this.clearDisplayOnNext = true;
+        this.previousDisplay = this.currentDisplay;
       } else {
         key.active = false;
       }
     }
-    console.log(this.storedValues);
 
   }
   private getPercent() {
     this.updateDisplay(this.currentDisplay, true);
-    const lastStoredValue = this.storedValues[this.storedValues.length - 1];
-    console.log(lastStoredValue);
-    switch (lastStoredValue.operator) {
+    switch (this.activeOperator) {
       case "+":
       case "-": 
-        this.updateDisplay((+this.currentDisplay * +lastStoredValue.value/100).toString());
+        this.updateDisplay((+this.currentDisplay * +this.previousDisplay/100).toString());
         break;
       default:
-        this.updateDisplay((+lastStoredValue.value/100).toString());
+        this.updateDisplay((+this.currentDisplay/100).toString());
 
     }
     
   }
 
   private evaluate() {
-    let totalThusFar: number = 0;
-    let nextOperation: string = "none";
+    const x = +this.previousDisplay;
+    const y = +this.currentDisplay;
+    if (this.clearDisplayOnNext === false) {
 
-    for (let storedValue of this.storedValues) {
-      console.log(totalThusFar);
-      if (nextOperation === 'none') {
-        totalThusFar = +storedValue.value;
-      } 
-      nextOperation = storedValue.operator;
-      switch (nextOperation) {
-        case 'x':
-          totalThusFar *= +this.currentDisplay;
-          break;
-        case '÷':
-          totalThusFar /= +this.currentDisplay;
-          break;
-        case '+':
-          totalThusFar += +this.currentDisplay;
-          break;
-        case '-':
-          totalThusFar -= +this.currentDisplay;
-          break;
-      }
+      this.previousDisplay = this.currentDisplay;
+    }
+    switch (this.activeOperator) {
+      case 'x':
+        this.updateDisplay((x * y).toString(), true); 
+        break;
+      case '÷':
+        this.updateDisplay((x / y).toString(), true); 
+        break;
+      case '+':
+        this.updateDisplay((x + y).toString(), true); 
+        break;
+      case '-':
+        this.updateDisplay((x - y).toString(), true); 
+        break;
     }
 
-    this.updateDisplay(totalThusFar.toString(), true);
     for (let key of this.keyAttributes) {
       key.active = false;
     }
     this.clearDisplayOnNext = true;
-    this.storedValues = this.storedValues.slice(-1);
-    console.log(this.storedValues);
   }
 
   private updateDisplay(contents: string, flicker: boolean = false) {
     this.currentDisplay = contents;
+    console.log("Previous:",this.previousDisplay,"Operator:", this.activeOperator, "Current:", this.currentDisplay, 'ClearNext:', this.clearDisplayOnNext)
     if (flicker) {
       this.displayIsOn = false;
       setTimeout(() => {
