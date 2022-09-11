@@ -20,19 +20,19 @@ export class KeypadComponent implements OnInit {
     {label: "AC", color: this.colors[0], width: 65, type: "clear", action: (label: string) => this.clearDisplay(label)}, 
     {label: "±", color: this.colors[0], width: 65, type: "changeSign", action: () => this.changeSign()}, 
     {label: "%", color: this.colors[0], width: 65, type: "percent", action: () => this.getPercent()}, 
-    {label: "÷", color: this.colors[1], width: 65, type: "divide", active: false, action: (label: string) => this.changeActivation(label)}, 
+    {label: "÷", color: this.colors[1], width: 65, type: "divide", active: false, action: () => this.changeActivation("divide")}, 
     {label: "7", color: this.colors[2], width: 65, type: "number", action: (label: string) => this.appendDisplay(label)}, 
     {label: "8", color: this.colors[2], width: 65, type: "number", action: (label: string) => this.appendDisplay(label)}, 
     {label: "9", color: this.colors[2], width: 65, type: "number", action: (label: string) => this.appendDisplay(label)}, 
-    {label: "x", color: this.colors[1], width: 65, type: "multiply", active: false, action: (label: string) => this.changeActivation(label)}, 
+    {label: "x", color: this.colors[1], width: 65, type: "multiply", active: false, action: () => this.changeActivation("multiply")}, 
     {label: "4", color: this.colors[2], width: 65, type: "number", action: (label: string) => this.appendDisplay(label)}, 
     {label: "5", color: this.colors[2], width: 65, type: "number", action: (label: string) => this.appendDisplay(label)}, 
     {label: "6", color: this.colors[2], width: 65, type: "number", action: (label: string) => this.appendDisplay(label)}, 
-    {label: "-", color: this.colors[1], width: 65, type: "subtract", active: false, action: (label: string) => this.changeActivation(label)}, 
+    {label: "-", color: this.colors[1], width: 65, type: "subtract", active: false, action: () => this.changeActivation("subtract")}, 
     {label: "1", color: this.colors[2], width: 65, type: "number", action: (label: string) => this.appendDisplay(label)}, 
     {label: "2", color: this.colors[2], width: 65, type: "number", action: (label: string) => this.appendDisplay(label)}, 
     {label: "3", color: this.colors[2], width: 65, type: "number", action: (label: string) => this.appendDisplay(label)}, 
-    {label: "+", color: this.colors[1], width: 65, type: "add", active: false, action: (label: string) => this.changeActivation(label)}, 
+    {label: "+", color: this.colors[1], width: 65, type: "add", active: false, action: () => this.changeActivation("add")}, 
     {label: "0", color: this.colors[2], width: 130, type: "number", action: (label: string) => this.appendDisplay(label)}, 
     {label: ".", color: this.colors[2], width: 65, type: "decimal", action: (label: string) => this.appendDisplay(label)}, 
     {label: "=", color: this.colors[1], width: 65, type: "equals", action: () => this.evaluate()}
@@ -91,7 +91,7 @@ export class KeypadComponent implements OnInit {
     this.updateDisplay(this.currentDisplay, true);
     this.activeOperator = operator;
     for (let key of this.keyAttributes) {
-      if (key.label === this.activeOperator) {
+      if (key.type === this.activeOperator) {
         key.active = true;
         this.clearDisplayOnNext = true;
         this.previousDisplay = this.currentDisplay;
@@ -104,8 +104,8 @@ export class KeypadComponent implements OnInit {
   private getPercent() {
     this.updateDisplay(this.currentDisplay, true);
     switch (this.activeOperator) {
-      case "+":
-      case "-": 
+      case "add":
+      case "subtract": 
         this.updateDisplay((+this.currentDisplay * +this.previousDisplay/100).toString());
         break;
       default:
@@ -123,16 +123,16 @@ export class KeypadComponent implements OnInit {
       this.previousDisplay = this.currentDisplay;
     }
     switch (this.activeOperator) {
-      case 'x':
+      case 'multiply':
         this.updateDisplay((x * y).toString(), true); 
         break;
-      case '÷':
+      case 'divide':
         this.updateDisplay((x / y).toString(), true); 
         break;
-      case '+':
+      case 'add':
         this.updateDisplay((x + y).toString(), true); 
         break;
-      case '-':
+      case 'subtract':
         this.updateDisplay((x - y).toString(), true); 
         break;
     }
