@@ -34,11 +34,11 @@ export class DisplayComponent implements OnInit {
   private determineSize(): string {
     const x = this.physicalWidth;
     switch (true) {
-      case (x > 220): return '.8em';
-      case (x > 180): return '1.1em';
-      case (x > 140): return '1.4em';
-      case (x > 110): return '1.8em';
-      case (x > 80): return '2.3em';
+      case (x > 210): return '.8em';
+      case (x > 170): return '1.1em';
+      case (x > 130): return '1.4em';
+      case (x > 100): return '1.8em';
+      case (x > 70): return '2.3em';
       default: return '3em';
     }
     
