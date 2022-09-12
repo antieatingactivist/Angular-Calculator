@@ -33,7 +33,15 @@ header {
 }
 .dot {
     width: 12px;
-    height: 12px;;
+    height: 12px;
     margin: 5px;
     border-radius: 100px;
+    color: #00000088;
+
+}
+.dot span {
+    position: relative;
+    font-size: 14px;
+    bottom: 4px;
+    left: 1.5px;
 }
