@@ -7,8 +7,8 @@ body {
 main {
     margin-top: 10vh;
     background-color: #242424aa;
-    width: 260px;
-    height: 400px;
+    width: 232px;
+    height: 318px;
     border-color: #ffffff33;
     border-width: 1px;
     border-style: inset solid;
@@ -17,24 +17,24 @@ main {
     box-shadow: 1px 2px 5px #00000099;
 }
 header {
-    /* height: 10px; */
+    /* height: px; */
     display: inline-flex;
-    padding: 4px;
+    padding: 3px;
 }
 
 .red {
-    background-color: #fc4646;
+    background-color: #ff5f57;
 }
 .yellow {
-    background-color: #fdae24;
+    background-color: #ffbb2e;
 }
 .green {
-    background-color: #29c032;
+    background-color: #28c540;
 }
 .dot {
     width: 12px;
     height: 12px;
-    margin: 5px;
+    margin: 4px;
     border-radius: 100px;
     color: #00000088;
 

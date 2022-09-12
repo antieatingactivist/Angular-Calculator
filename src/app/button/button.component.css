@@ -1,8 +1,8 @@
 button {
     color: #FFFFFF;
-    height: 60px;
+    height: 48px;
     border-style: solid;
-    font-size: 1.6em;
+    font-size: 1.4em;
 }
 
 button:active {
