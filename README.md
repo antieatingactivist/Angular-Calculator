@@ -3,7 +3,8 @@
 
 This is a project I did while learning the ins and outs of Angular. It is modeled after the MacOS calculator and the goal is to implement all of the behaviors.
 
-<img width="305" alt="Screen Shot 2022-09-08 at 6 33 02 PM" src="https://user-images.githubusercontent.com/1414728/189253673-0f26fecb-23fe-4de4-a6be-6f2cf01e2fcc.png">
+<img width="292" alt="Screen Shot 2022-09-11 at 7 58 09 PM" src="https://user-images.githubusercontent.com/1414728/189565922-143614a9-baf6-47c0-8cdc-4cc99a8d3a84.png">
+
 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.1.
