@@ -151,8 +151,9 @@ export class KeypadComponent implements OnInit {
   }
 
   private updateDisplay(contents: string, flicker: boolean = false) {
-    this.currentDisplay = contents;
-    console.log("Previous:",this.previousDisplay,"Operator:", this.activeOperator, "Current:", this.currentDisplay, 'ClearNext:', this.clearDisplayOnNext)
+    if (contents !== 'NaN') this.currentDisplay = contents;
+    else this.currentDisplay = "error";
+
     if (flicker) {
       this.displayIsOn = false;
       setTimeout(() => {
