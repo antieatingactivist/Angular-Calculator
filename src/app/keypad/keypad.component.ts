@@ -121,16 +121,21 @@ export class KeypadComponent implements OnInit {
   private evaluate() {
     const x = +this.previousDisplay;
     const y = +this.currentDisplay;
-    if (this.clearDisplayOnNext === false) {
+    if (!this.clearDisplayOnNext) {
 
       this.previousDisplay = this.currentDisplay;
     }
+    console.log(this.previousDisplay, " ", this.currentDisplay)
     switch (this.activeOperator) {
       case 'multiply':
         this.updateDisplay((x * y).toString(), true); 
         break;
       case 'divide':
-        this.updateDisplay((x / y).toString(), true); 
+        if (this.clearDisplayOnNext) {
+          this.updateDisplay((y / x).toString(), true);
+        } else {
+          this.updateDisplay((x / y).toString(), true);
+        }
         break;
       case 'add':
         this.updateDisplay((x + y).toString(), true); 
