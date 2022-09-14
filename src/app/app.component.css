@@ -1,11 +1,13 @@
-body {
+/* body {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    width: 100vw;
+    Height: 100vh;
 
-}
+} */
 main {
-    margin-top: 10vh;
+    margin-top: 50px;
     background-color: #242424aa;
     width: 232px;
     height: 318px;
@@ -51,4 +53,20 @@ header {
     font-size: 14px;
     bottom: 4px;
     left: 1.5px;
+}
+
+
+@media all and (min-width: 1024px) and (max-width: 1280px) { 
+
+}
+
+@media all and (min-width: 768px) and (max-width: 1024px) { }
+
+@media all and (min-width: 480px) and (max-width: 768px) { }
+
+@media all and (max-width: 480px) { 
+    main {
+        width: 100vw;
+        Height: 100vh;
+    }
 }

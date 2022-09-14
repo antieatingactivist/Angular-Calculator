@@ -17,25 +17,25 @@ export class KeypadComponent implements OnInit {
   colors: Array<string> = ["#39393988", "#ff9f0a", "#5a5a5add"];
 
   keyAttributes: Array<IKey> = [
-    {label: "AC", color: this.colors[0], width: 58, type: "clear", action: (label: string) => this.clearDisplay(label)}, 
-    {label: "<span class='sup'>+</span>⁄<span class='sub'>-</span>", color: this.colors[0], width: 58, type: "changeSign", action: () => this.changeSign()}, 
-    {label: "%", color: this.colors[0], width: 58, type: "percent", action: () => this.getPercent()}, 
-    {label: "÷", color: this.colors[1], width: 58, type: "divide", active: false, action: () => this.changeActivation("divide")}, 
-    {label: "7", color: this.colors[2], width: 58, type: "number", action: (label: string) => this.appendDisplay(label)}, 
-    {label: "8", color: this.colors[2], width: 58, type: "number", action: (label: string) => this.appendDisplay(label)}, 
-    {label: "9", color: this.colors[2], width: 58, type: "number", action: (label: string) => this.appendDisplay(label)}, 
-    {label: "✕", color: this.colors[1], width: 58, type: "multiply", active: false, action: () => this.changeActivation("multiply")}, 
-    {label: "4", color: this.colors[2], width: 58, type: "number", action: (label: string) => this.appendDisplay(label)}, 
-    {label: "5", color: this.colors[2], width: 58, type: "number", action: (label: string) => this.appendDisplay(label)}, 
-    {label: "6", color: this.colors[2], width: 58, type: "number", action: (label: string) => this.appendDisplay(label)}, 
-    {label: "–", color: this.colors[1], width: 58, type: "subtract", active: false, action: () => this.changeActivation("subtract")}, 
-    {label: "1", color: this.colors[2], width: 58, type: "number", action: (label: string) => this.appendDisplay(label)}, 
-    {label: "2", color: this.colors[2], width: 58, type: "number", action: (label: string) => this.appendDisplay(label)}, 
-    {label: "3", color: this.colors[2], width: 58, type: "number", action: (label: string) => this.appendDisplay(label)}, 
-    {label: "+", color: this.colors[1], width: 58, type: "add", active: false, action: () => this.changeActivation("add")}, 
-    {label: "0", color: this.colors[2], width: 116, type: "number", action: (label: string) => this.appendDisplay(label)}, 
-    {label: ".", color: this.colors[2], width: 58, type: "decimal", action: (label: string) => this.appendDisplay(label)}, 
-    {label: "=", color: this.colors[1], width: 58, type: "equals", action: () => this.evaluate()}
+    {label: "AC", color: this.colors[0], width: 25, type: "clear", action: (label: string) => this.clearDisplay(label)}, 
+    {label: "<span class='sup'>+</span>⁄<span class='sub'>-</span>", color: this.colors[0], width: 25, type: "changeSign", action: () => this.changeSign()}, 
+    {label: "%", color: this.colors[0], width: 25, type: "percent", action: () => this.getPercent()}, 
+    {label: "÷", color: this.colors[1], width: 25, type: "divide", active: false, action: () => this.changeActivation("divide")}, 
+    {label: "7", color: this.colors[2], width: 25, type: "number", action: (label: string) => this.appendDisplay(label)}, 
+    {label: "8", color: this.colors[2], width: 25, type: "number", action: (label: string) => this.appendDisplay(label)}, 
+    {label: "9", color: this.colors[2], width: 25, type: "number", action: (label: string) => this.appendDisplay(label)}, 
+    {label: "✕", color: this.colors[1], width: 25, type: "multiply", active: false, action: () => this.changeActivation("multiply")}, 
+    {label: "4", color: this.colors[2], width: 25, type: "number", action: (label: string) => this.appendDisplay(label)}, 
+    {label: "5", color: this.colors[2], width: 25, type: "number", action: (label: string) => this.appendDisplay(label)}, 
+    {label: "6", color: this.colors[2], width: 25, type: "number", action: (label: string) => this.appendDisplay(label)}, 
+    {label: "–", color: this.colors[1], width: 25, type: "subtract", active: false, action: () => this.changeActivation("subtract")}, 
+    {label: "1", color: this.colors[2], width: 25, type: "number", action: (label: string) => this.appendDisplay(label)}, 
+    {label: "2", color: this.colors[2], width: 25, type: "number", action: (label: string) => this.appendDisplay(label)}, 
+    {label: "3", color: this.colors[2], width: 25, type: "number", action: (label: string) => this.appendDisplay(label)}, 
+    {label: "+", color: this.colors[1], width: 25, type: "add", active: false, action: () => this.changeActivation("add")}, 
+    {label: "0", color: this.colors[2], width: 50, type: "number", action: (label: string) => this.appendDisplay(label)}, 
+    {label: ".", color: this.colors[2], width: 25, type: "decimal", action: (label: string) => this.appendDisplay(label)}, 
+    {label: "=", color: this.colors[1], width: 25, type: "equals", action: () => this.evaluate()}
   ]
 
   constructor() { }
