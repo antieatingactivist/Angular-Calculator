@@ -67,6 +67,6 @@ header {
 @media all and (max-width: 480px) { 
     main {
         width: 100vw;
-        Height: 100vh;
+        height: 100vh;
     }
 }

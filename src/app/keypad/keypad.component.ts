@@ -125,7 +125,7 @@ export class KeypadComponent implements OnInit {
 
       this.previousDisplay = this.currentDisplay;
     }
-    console.log(this.previousDisplay, " ", this.currentDisplay)
+
     switch (this.activeOperator) {
       case 'multiply':
         this.updateDisplay((x * y).toString(), true); 

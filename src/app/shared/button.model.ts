@@ -5,7 +5,4 @@ export interface IKey {
     type: string;
     active?: boolean;
     action?: Function;
-
-
-
 }
