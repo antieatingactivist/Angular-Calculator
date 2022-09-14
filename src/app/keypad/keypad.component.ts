@@ -156,8 +156,14 @@ export class KeypadComponent implements OnInit {
   }
 
   private updateDisplay(contents: string, flicker: boolean = false) {
-    if (contents !== 'NaN') this.currentDisplay = contents;
-    else this.currentDisplay = "error";
+
+    switch (contents) {
+      case "NaN": this.currentDisplay = "e";
+        break;
+      case "Infinity": this.currentDisplay = "∞";
+        break;
+      default: this.currentDisplay = contents;
+    }
 
     if (flicker) {
       this.displayIsOn = false;
