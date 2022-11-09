@@ -13,6 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            // "baseHref": "Angular-Calculator/",
             "outputPath": "dist/Angular-Calculator",
             "index": "src/index.html",
             "main": "src/main.ts",
