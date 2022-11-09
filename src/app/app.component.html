@@ -8,12 +8,13 @@
 </head>
 <body>
   <main>
-    <header (mouseover)="changeText=true" (mouseout)="changeText=false">
+    <!-- <header (mouseover)="changeText=true" (mouseout)="changeText=false">
       <div class="red dot"><span *ngIf="changeText">✕</span></div>
       <div class="yellow dot"><span *ngIf="changeText">–</span></div>
       <div class="green dot"><span *ngIf="changeText">+</span></div>
 
-    </header>
+    </header> -->
+    <div style="-webkit-app-region: drag; height: 26px;"></div>
     <app-keypad>
     </app-keypad>
     
