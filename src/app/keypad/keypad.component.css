@@ -1,5 +1,6 @@
 div {
     /* background-color: #444444; */
+    /* margin-top: 30px; changed for electron */
     height: 100%;
-    
+    /* -webkit-app-region: drag; */
 }

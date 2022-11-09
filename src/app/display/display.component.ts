@@ -26,7 +26,7 @@ export class DisplayComponent implements OnInit {
         default: this.physicalWidth+=10;
       }
     }
-    console.log("WIDTH: ", this.physicalWidth);
+
     return {
       fontSize: this.determineSize(),  
     }
