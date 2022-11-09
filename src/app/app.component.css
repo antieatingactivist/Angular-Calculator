@@ -18,6 +18,9 @@ main {
     overflow: hidden;
     box-shadow: 1px 2px 5px #00000099;
 }
+.noElectron {
+    margin-top: 50px;
+}
 header, .header {
     -webkit-app-region: drag;
     height: 26px;

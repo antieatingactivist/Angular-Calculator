@@ -7,7 +7,7 @@
   <title>Document</title>
 </head>
 <body>
-  <main>
+  <main [ngClass]="{'noElectron' : !electron}">
     <header *ngIf="!electron" (mouseover)="changeText=true" (mouseout)="changeText=false">
       <div class="red dot"><span *ngIf="changeText">✕</span></div>
       <div class="yellow dot"><span *ngIf="changeText">–</span></div>
