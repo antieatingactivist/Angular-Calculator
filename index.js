@@ -34,14 +34,3 @@ app.on('window-all-closed', () => {
   }
 });
 
-function listenForEmergency() {
-  let message = 'Emergency: We have no beer'
-  console.log('Wait 5 seconds before "receiving" emergency message'); // Testing
-  setTimeout(() => { showEmergencyWindow(message); }, 5000);
-}
-
-// Create window and send message via IPC
-function showEmergencyWindow(message) {
-  window = createWindow();
-  window.webContents.send('emergency', message); // <-- Use of IPC messaging
-}
